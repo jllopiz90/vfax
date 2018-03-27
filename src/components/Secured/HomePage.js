@@ -16,7 +16,7 @@ export default class Home extends Component{
               </Button>
             </Left>
             <Body>
-              <Title style={styles.textHeader}>Home</Title>
+              <Title style={styles.homeHeader}>Home</Title>
             </Body>
             <Right/>
           </Header>

@@ -41,8 +41,22 @@ export  default{
     textHeader:{
         fontWeight: Platform.OS === "ios" ? "600" : "500",
         fontSize:24,
-        marginLeft:20,
-        color:"#777"//"#FFFFFF"
+        position:'relative',
+        right:-80,
+        //marginLeft:40,
+        color:"#777"
+    },
+    homeHeader:{
+        fontWeight: Platform.OS === "ios" ? "600" : "500",
+        fontSize:24,        
+        color:"#777"
+    },
+    scannerHeader:{
+        fontWeight: Platform.OS === "ios" ? "600" : "500",
+        fontSize:24,
+        position:'relative',
+        left:-20,
+        color:"#777"
     },
     numberHeader:{
         fontWeight: Platform.OS === "ios" ? "400" : "300",
@@ -136,4 +150,93 @@ export  default{
         alignSelf:"stretch",
         backgroundColor:"blue"
     },
+    scannerContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFF',
+
+    },
+    snewPic: {
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',        
+
+    },
+    afterPicCont:{
+        height: 40,
+        flex:1,
+        flexDirection:'row',
+    },
+    afterPic: {
+        marginLeft:40
+    },
+    afterPicR: {
+        marginLeft:260
+    },
+    button: {
+
+        position: 'absolute',
+
+        alignItems: 'center',
+
+        justifyContent: 'flex-start',
+
+        // borderRadius: 10,
+
+        top: 20,
+
+        bottom: 20,
+
+        height: 40,
+
+        // width: 120,
+
+        //backgroundColor: '#FFF',
+
+    },
+
+    left: {        
+        left: 60,
+
+    },
+
+    right: {        
+        right: 80,
+
+    },
+
+    welcome: {
+
+        fontSize: 20,
+
+        textAlign: 'center',
+
+        margin: 10,
+
+    },
+
+    instructions: {
+
+        textAlign: 'center',
+
+        color: '#333333',
+
+        marginBottom: 5,
+
+    },
+
+    scanner: {
+
+        flex: 1,
+
+        width: 400,
+
+        height: 200,
+
+        borderColor: 'orange',
+
+        borderWidth: 1
+
+    }
 };

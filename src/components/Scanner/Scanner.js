@@ -1,29 +1,16 @@
-
 import React, { Component } from 'react';
-
 import {
-
     AppRegistry,
-
     StyleSheet,
-
     Text,
-
     Image,
-
     TouchableOpacity,
-
     View
-
 } from 'react-native';
-
 import { Container, Header, Title, Left, Button, Right, Body, Content} from 'native-base';
-
 import { Icon } from 'react-native-elements';
-
-
 import DocumentScanner from 'react-native-document-scanner';
-
+import styles from "../Extra/Style";
 
 
 export default class MyScanner extends Component {
@@ -75,8 +62,8 @@ export default class MyScanner extends Component {
     render() {
 
         return (
-            <Container style={styles.containerWhite}>
-                <Header noShadow>
+            <Container >
+                <Header>
                     <Left style={{ flex: 1, flexDirection: 'row' }}>
                         <Button
                             transparent
@@ -84,16 +71,16 @@ export default class MyScanner extends Component {
                             <Icon name="chevron-left" color="#777" />
                         </Button>
                         <Body style={{ marginLeft: 20 }}>
-                            <Title style={styles.textHeader}>Scanner</Title>
+                            <Title style={styles.scannerHeader}>Scanner</Title>
                         </Body>
                     </Left>
                 </Header>
                 
-                    <View style={styles.container}>
+                    <View style={styles.scannerContainer}>
 
                         {this.state.image ?
 
-                            <Image style={{ flex: 1, width: 300, height: 200 }} source={{ uri: `data:image/jpeg;base64,${this.state.image}` }} resizeMode="contain" /> :
+                            <Image style={{ flex: 1,width:styles.deviceWidth, }} source={{ uri: `data:image/jpeg;base64,${this.state.image}` }}  /> :
 
                             <DocumentScanner
 
@@ -129,7 +116,10 @@ export default class MyScanner extends Component {
 
                         }
 
-                        <Text style={styles.instructions}>
+                        {this.state.image === null ?
+                            <View>
+
+                            <Text style={styles.instructions}>
 
                             ({this.state.stableCounter || 0} correctly formated rectangle detected
                             
@@ -140,29 +130,30 @@ export default class MyScanner extends Component {
                             {this.renderDetectionType()}
 
                         </Text>
-
-                        {this.state.image === null ?
-
+   
                             <TouchableOpacity style={styles.newPic} onPress={() => this.scanner.capture()}>
 
                                 <Icon name="camera-alt" />
 
-                            </TouchableOpacity> :
-
-                            <TouchableOpacity style={styles.newPic} onPress={() => this.setState({ image: null })}>
-
-                                <Text><Icon name="camera-alt" /> <Icon name="repeat" /></Text>
-
-                            </TouchableOpacity>
+                            </TouchableOpacity></View> :
+                            
+                            <View style={{flexDirection:'row',alignSelf:'stretch'}}>
+                                <TouchableOpacity style={styles.afterPic} onPress={() => this.setState({ image: null })}>
+                                    <Text><Icon name="ios-trash" type ="ionicon" size={36}/></Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.afterPicR} onPress={() => alert("send picture")}>
+                                   <Text><Icon name="send" size={36}/></Text>
+                                </TouchableOpacity>
+                            </View>
 
                         }
-
-                        <TouchableOpacity style={[styles.button,styles.left]} onPress={() => this.setState({ flashEnabled: !this.state.flashEnabled })}>
-                                    {this.state.flashEnabled && <Icon name="flash-off" color="#FFF" />}
-                                    {!this.state.flashEnabled && <Icon name="flash-on" color="#FFF" />}
-                        </TouchableOpacity>                                                
+                        {!this.state.image &&
+                            <TouchableOpacity style={[styles.button,styles.left]} onPress={() => this.setState({ flashEnabled: !this.state.flashEnabled })}>
+                                        {this.state.flashEnabled && <Icon type="ionicon" name="ios-flash-outline" color="#FFF" size={32}/>}
+                                        {!this.state.flashEnabled && <Icon type="ionicon"  name="ios-flash" color="#FFF" size={32}/>}
+                            </TouchableOpacity> 
+                        }
                     </View>
-                
             </Container>
 
 
@@ -171,98 +162,3 @@ export default class MyScanner extends Component {
     }
 
 }
-
-
-
-const styles = StyleSheet.create({
-
-    container: {
-
-        flex: 1,
-
-        justifyContent: 'center',
-
-        alignItems: 'center',
-
-        backgroundColor: '#F5FCFF',
-
-    },
-
-    snewPic: {
-        height: 40,
-
-        alignItems: 'center',
-
-        justifyContent: 'center'
-
-    },
-
-    button: {
-
-        position: 'absolute',
-
-        alignItems: 'center',
-
-        justifyContent: 'center',
-
-        borderRadius: 10,
-
-        top: 20,
-
-        bottom: 20,
-
-        height: 40,
-
-        width: 120,
-
-        //backgroundColor: '#FFF',
-
-    },
-
-    left: {
-
-        left: 140,
-
-    },
-
-    right: {
-
-        right: 20,
-
-    },
-
-    welcome: {
-
-        fontSize: 20,
-
-        textAlign: 'center',
-
-        margin: 10,
-
-    },
-
-    instructions: {
-
-        textAlign: 'center',
-
-        color: '#333333',
-
-        marginBottom: 5,
-
-    },
-
-    scanner: {
-
-        flex: 1,
-
-        width: 400,
-
-        height: 200,
-
-        borderColor: 'orange',
-
-        borderWidth: 1
-
-    }
-
-});
