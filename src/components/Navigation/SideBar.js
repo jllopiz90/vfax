@@ -1,6 +1,8 @@
     import React, {Component} from "react";
     import {AppRegistry ,Image, StatusBar, ImageBackground, View} from "react-native";
     import {Container,Content,Text,List,ListItem, Left, Right, Button} from "native-base";
+    import {connect} from 'react-redux';
+    import {logoutUser} from '../../actions'; 
     import {Icon} from 'react-native-elements';
     import styles from "../Extra/Style";
 
@@ -37,10 +39,14 @@
         }
     ];
 
-    export default class Sidebar extends React.Component{
+    class Sidebar extends React.Component{
         constructor(props) {
             super(props);
         } 
+       
+        onButtonPress(){
+           this.props.logoutUser();
+        }
 
         render(){
             return (
@@ -72,7 +78,7 @@
                       <List style={styles.list}>
                       <ListItem
                             button
-                            onPress={() =>alert("logout press")}>
+                            onPress={this.onButtonPress.bind(this)}>
                             <Text style={styles.text}>Logout</Text>
                             </ListItem>
                       </List>
@@ -80,4 +86,12 @@
             );
         }
     }
+
+    const mapStateToProps = ({auth}) =>{
+        const {isLoggedIn} = auth;
+    
+        return{ isLoggedIn};
+    }
+
+    export default connect(mapStateToProps,{logoutUser}) (Sidebar);
 

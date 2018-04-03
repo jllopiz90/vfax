@@ -1,48 +1,52 @@
 import React, {Component} from 'react';
-import { StyleSheet,  View,TextInput, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet,  TextInput, TouchableOpacity,Text } from 'react-native';
+import { Container, Header, Content,Button, View, Spinner } from 'native-base';
+import {connect} from 'react-redux';
+import {emailChanged, passwordChanged, loginUser} from '../../actions'; 
 
 
-export default class LoginForm extends Component{
+class LoginForm extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-          userName: '',
-          password: '',
-          message : ''
-        };
     }       
     
-    handleLogin = ()=>{       
-       var proceed = false;
-        fetch("https://profilehub.auth0.com/oauth/token", {
-            method: "POST",             
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                username        : this.state.userName,
-                password        : this.state.password,
-                client_id       : "4SgjJ3eqQ24PF9FRKvzpyEwfPYGdP1yI",
-                client_secret   : "3fw2EBFTnEzGcZPkzjmFxePKn5MSiUb3bf5nH7OSIE11fI4t8NmMbrNG9sd2M3bb",
-                grant_type      : "password",
-                scope           : "openid",
-              }),
-          })
-          .then((response) => response.json())
-          .then((response) => {
-            if (response.error) 
-              this.setState({message:"Invalid user or password!"})
-            else
-              proceed = true;
-          })
-          .done((() => {            
-              if (proceed)
-                 this.props.onLoginPress();
-            })
-          );
-      
+    onEmailChange(text){
+        this.props.emailChanged(text);
     }
+
+    onPasswordChange(text){
+        this.props.passwordChanged(text);
+    }
+    
+    onButtonPress(){
+        const {email, password} = this.props;
+        
+       this.props.loginUser({email,password});
+    }
+
+    renderError(){
+        if(this.props.error){
+            return(
+                <View style={{backgroundColor: 'white'}}>
+                    <Text style={styles.errorTextStyle}>
+                        {this.props.error}
+                    </Text>
+                </View>    
+            ); 
+        }
+    }
+
+    renderButton(){
+        if(this.props.loading){
+            return <Spinner size="large" color="blue"/>;
+        }
+        return(
+            <TouchableOpacity style={styles.buttonContainer} onPress={this.onButtonPress.bind(this)}>
+                <Text style={styles.buttonText}>LOGIN</Text>
+            </TouchableOpacity>
+        );
+    }
+
     
     render(){
       return(
@@ -54,33 +58,33 @@ export default class LoginForm extends Component{
                 autoCapitalize ="none"
                 autoCorrect ={false}
                 style = {styles.input}
-                onChangeText = {(userName)=>{
-                  this.setState({userName})
-                  this.setState({message:""})
-                }}
-                value = {this.state.userName}
+                onChangeText={this.onEmailChange.bind(this)} 
+                value={this.props.email}
             />    
             <TextInput 
                 placeholder = "Password"
                 placeholderTextColor="rgba(255,255,255,0.7)"
                 secureTextEntry
                 style = {styles.input}
-                onChangeText = {(password)=>this.setState({password})}
-                value = {this.state.password}
+                onChangeText={this.onPasswordChange.bind(this)} 
+                value={this.props.password}
             />
-            {!!this.state.message && (
-              <Text
-                  style={{fontSize: 14, color: 'red', padding: 5, marginLeft:20}}>
-                  {this.state.message}
-              </Text>
-            )}
-            <TouchableOpacity style={styles.buttonContainer} onPress={this.handleLogin}>
-                <Text style={styles.buttonText}>LOGIN</Text>
-            </TouchableOpacity>       
+            {this.renderButton()}
+            {this.renderError()}
         </View>
         );
     }
 }
+
+const mapStateToProps = ({auth}) =>{
+    const {email, password, error, loading} = auth;
+
+    return{ email,password, error, loading};
+}
+
+export default connect(mapStateToProps,{
+    emailChanged, passwordChanged, loginUser
+}) (LoginForm);
 
 const styles = StyleSheet.create({
     container: {

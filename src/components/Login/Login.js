@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
 import { StyleSheet, Image, View, KeyboardAvoidingView } from 'react-native';
 import LoginForm from './LoginForm';
+import {connect} from 'react-redux';
+import {emailChanged, passwordChanged, loginUser} from '../../actions'; 
+import {DrawerNav} from '../Navigation/DrawerNav';
 
-export default class Login extends Component{
+class Login extends Component{
   constructor(props) {
     super(props);
     // this.props.onLogoutPress();
   }
 
-  render(){
+  renderLogin(){
+    console.log("in Login Comp");
+    console.log(this.props.isLoggedIn);
+    if(this.props.isLoggedIn){
+        return (
+          <View style={styles.container}>
+              <DrawerNav />
+          </View>
+        );
+    }else{
       return(
         <KeyboardAvoidingView behavior= "padding" style={styles.avoidingView}>
             <View style= {styles.container}>
@@ -18,13 +30,29 @@ export default class Login extends Component{
                 />
                 </View>
                 <View style= {styles.formContainer}>
-                    <LoginForm onLoginPress ={this.props.onLoginPress}/>
+                    <LoginForm />
                 </View>
             </View>
-        </KeyboardAvoidingView>    
-        );
+        </KeyboardAvoidingView>
+      );
     }
+  }
+
+  render(){
+    return(
+      this.renderLogin()
+    );
+  }
+
 }
+
+const mapStateToProps = ({auth}) =>{
+  const {isLoggedIn} = auth;
+  
+  return { isLoggedIn};
+}
+
+export default connect(mapStateToProps)(Login);
 
 const styles = StyleSheet.create({
     container: {
