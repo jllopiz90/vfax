@@ -51,9 +51,13 @@ export const loginUser = ({email, password})=>{
                 grant_type      : GRANT_TYPE,
                 scope           : SCOPE,
               }),
-          }).then(user=>{
-            dispatch({type: LOGIN_USER_SUCCESS, payload:user})
-          }).catch(() =>loginUserFail(dispatch));
+          }).then((response)=> response.json())
+          .then((response)=>{
+              if(response.error)
+                loginUserFail(dispatch)
+              else  
+                dispatch({type: LOGIN_USER_SUCCESS, payload:response})
+          });
         
     };
 };

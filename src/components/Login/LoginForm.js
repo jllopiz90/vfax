@@ -27,11 +27,9 @@ class LoginForm extends Component{
     renderError(){
         if(this.props.error){
             return(
-                <View style={{backgroundColor: 'white'}}>
-                    <Text style={styles.errorTextStyle}>
-                        {this.props.error}
-                    </Text>
-                </View>    
+                <Text style={styles.errorTextStyle}>
+                    {this.props.error}
+                </Text>
             ); 
         }
     }
@@ -69,8 +67,8 @@ class LoginForm extends Component{
                 onChangeText={this.onPasswordChange.bind(this)} 
                 value={this.props.password}
             />
-            {this.renderButton()}
             {this.renderError()}
+            {this.renderButton()}
         </View>
         );
     }
@@ -109,5 +107,11 @@ const styles = StyleSheet.create({
         color:'#FFFFFF',
         fontWeight: '700',
         fontSize: 22
+    },
+    errorTextStyle:{
+        fontSize:14,
+        color:'red',
+        padding:5,
+        marginLeft:20
     }
 });
