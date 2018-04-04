@@ -3,7 +3,7 @@ import {Image, View, TouchableOpacity } from 'react-native';
 import { Container, Icon, Header, Title, Left,  Button,Right, Body, Content,Text, Card, CardItem } from "native-base";
 import styles from "../Extra/Style";
 
-export default class Home extends Component{   
+class Home extends Component{   
    render(){
       return(
         <Container style= {styles.container}>
@@ -32,3 +32,5 @@ export default class Home extends Component{
       );
     }
 }
+
+export default Home;

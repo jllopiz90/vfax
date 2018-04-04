@@ -79,8 +79,6 @@ export default class VoiceMessage extends Component{
   }
 
   componentWillUnmount() {
-    //console.log('unmount');
-    // TODO
     clearInterval(this._progressInterval);
   }
 

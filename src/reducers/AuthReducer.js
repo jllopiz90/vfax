@@ -36,7 +36,6 @@ export default (state = INITIAL_STATE, action) => {
                 isLoggedIn:false };
         case LOGIN_USER_SUCCESS:
             return { ...state,
-                email:'',
                 password:'',
                 user: null,
                 error: '',

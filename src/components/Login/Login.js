@@ -8,12 +8,9 @@ import {DrawerNav} from '../Navigation/DrawerNav';
 class Login extends Component{
   constructor(props) {
     super(props);
-    // this.props.onLogoutPress();
   }
 
   renderLogin(){
-    console.log("in Login Comp");
-    console.log(this.props.isLoggedIn);
     if(this.props.isLoggedIn){
         return (
           <View style={styles.container}>
