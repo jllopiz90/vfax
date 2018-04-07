@@ -56,6 +56,7 @@
                             source={require('../../imgs/logo-light.png')} 
                             >                        
                         </Image>
+                        <Text style={styles.emailHomeP}>{this.props.email}</Text>
                     </View>
                     <List style={styles.list}
                         dataArray={routes}
@@ -88,9 +89,9 @@
     }
 
     const mapStateToProps = ({auth}) =>{
-        const {isLoggedIn} = auth;
+        const {isLoggedIn, email} = auth;
     
-        return{ isLoggedIn};
+        return{ isLoggedIn, email};
     }
 
     export default connect(mapStateToProps,{logoutUser}) (Sidebar);

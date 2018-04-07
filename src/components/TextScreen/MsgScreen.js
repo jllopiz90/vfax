@@ -96,7 +96,7 @@ const messages = [
 
   const TextNav = StackNavigator({
     TextList: {
-      screen: props => <MsgList {...props} data={contacts} type={"text"}/>,
+      screen: props => <MsgList {...props}  type={"text"}/>,
       navigationOptions:({navigation})=>({
        
       })

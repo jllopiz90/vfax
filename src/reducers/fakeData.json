@@ -1,0 +1,177 @@
+[
+    {
+        "id"			:"AA97C970-DD9E-496F-BC66-3D92486B1657",
+        "number"		:"786-422-3322",
+        "voiceMessages" :[
+            {
+                "id"	:"E1323991-ED43-4C45-A90A-1125354C6F88",
+                "from"	:"786-322-1119",
+                "time"	:"December 15, 2017 Fri 3:13 PM",
+                "uri"	:"https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
+             },
+            {
+                "id"	:"19038A2A-08F8-42AD-9E45-C16450C25182",
+                "from"	:"786-322-1119",
+                "time"	:"December 15, 2017 Fri 3:13 PM",
+                "uri"	:"https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
+            }
+        ],
+        "conversations":[
+            {
+                "id":111,
+                "unseenCount":2,
+                "contactNumbers":"786-322-1112,786-422-3322",
+                "messagesList":[
+                    {
+                        "_id": 1003,
+                        "text": "Yes, and I use Gifted Chat!",
+                        "createdAt": "Tue Aug 30 2016 13:20:00 GMT-0400 (EDT)",
+                        "user": {
+                          "_id": 1,
+                          "name": "Developer"
+                        },
+                        "userIsSender":true,
+                        "sent": true,
+                        "received": true,
+                        "location": {
+                          "latitude": 48.864601,
+                          "longitude": 2.398704
+                        }
+                      },
+                      {
+                        "_id": 1002,
+                        "text": "Are you building a chat app?",
+                        "createdAt": "Tue Aug 30 2016 13:20:00 GMT-0400 (EDT)",
+                        "userIsSender":false,
+                        "user": {
+                          "_id": 2,
+                          "name": "React Native",
+                          "phoneNumber":"786-322-1112"
+                        }
+                      },
+                      {
+                        "_id": 1001,
+                        "text": "You are officially rocking GiftedChat.",
+                        "createdAt": "Tue Aug 30 2016 13:20:00 GMT-0400 (EDT)",
+                        "userIsSender":false,
+                        "user":{
+                          "_id": 3,
+                          "name":"System",
+                          "phoneNumber":"786-422-3322"
+                        }
+                      }
+                ],
+                "lastMessage":{
+                    "_id": 1003,
+                    "text": "Yes, and I use Gifted Chat!",
+                    "createdAt": "Tue Aug 30 2016 13:20:00 GMT-0400 (EDT)",
+                    "user": {
+                      "_id": 1,
+                      "name": "Developer"
+                    },
+                    "userIsSender":true,
+                    "sent": true,
+                    "received": true,
+                    "location": {
+                      "latitude": 48.864601,
+                      "longitude": 2.398704
+                    }
+                  }
+            },
+            {
+                "id":211,
+                "unseenCount":1,
+                "contactNumbers":"786-322-1119",
+                "messagesList":[
+                    {
+                        "_id": 1112,
+                        "text": "Yes, and I use Gifted Chat again and again!",
+                        "createdAt": "Tue Aug 30 2016 13:20:00 GMT-0400 (EDT)",
+                        "user": {
+                          "_id": 1,
+                          "name": "Developer"
+                        },
+                        "sent": true,
+                        "userIsSender":true,
+                        "received": true
+                      },
+                      {
+                        "_id": 1111,
+                        "text": "Are you building a chat app again?",
+                        "createdAt": "Tue Aug 30 2016 13:20:00 GMT-0400 (EDT)",
+                        "userIsSender":true,
+                        "user": {
+                          "_id": 2,
+                          "name": "React Native",
+                          "phoneNumber":"786-322-1119"
+                        }
+                      }
+                ],
+                "lastMessage":{
+                    "_id": 1112,
+                    "text": "Yes, and I use Gifted Chat again and again!",
+                    "createdAt": "Tue Aug 30 2016 13:20:00 GMT-0400 (EDT)",
+                    "user": {
+                      "_id": 1,
+                      "name": "Developer"
+                    },
+                    "sent": true,
+                    "userIsSender":true,
+                    "received": true
+                }
+            }
+        ],
+        "faxes":[
+            {
+                "id":"6191E41A-F451-4D27-85EE-D8F128C355E8", 
+                "from":"646-222-4444", 
+                "time":"March 3, 2018 Sat 12:12 AM",
+                "fileName":"../../files/faxImg.png"
+            }
+        ]
+    },
+    {
+        "id"			:"28570B06-2219-4167-8E77-912271BE83EF",
+        "number"		:"212-457-0877",
+        "voiceMessages" :[
+            {
+                "id"	:"E56B9F15-56E3-4B10-9737-1E1DD4ECFB0C",
+                "from"	:"786-334-2338",
+                "time"	:"Mon 22, 2018 Fri 3:13 PM",
+                "uri"	:"https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
+            },
+            {
+                "id"	:"D0EF01C0-D344-46E0-9F05-A6AAC31524B6",
+                "from"	:"631-771-1119",
+                "time"	:"January 11, 2018 Thurs 11:13 PM",
+                "uri"	:"https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
+            }
+        ],
+        "textMessages":[
+            {
+                "id"	:"38D3311F-5F01-4A45-9DEC-C79D61D25AD3",
+                "text"	:"some text",
+                "create_at": "January 22, 2018 Mon 8:14 AM",
+                "sent"	: true,
+                "from"	:"786-322-1119",
+                "received":true
+            },
+            {
+                "id"	:"957AA2F5-C8F8-4073-92A5-AF4E89074427",
+                "text"	:"some text",
+                "create_at": "January 22, 2018 Mon 12:14 PM",
+                "sent"	: true,
+                "from"	:"786-322-1119",
+                "received":true
+            }
+        ],
+        "faxes":[
+            {
+                "id":"F0959DC1-88F7-4D1A-A555-89F8F8E03725", 
+                "from":"305-222-4444", 
+                "time":"March 3, 2018 Sat 12:12 AM",
+                "fileName":"../../files/faxImg.png"
+            }
+        ]
+    }
+]

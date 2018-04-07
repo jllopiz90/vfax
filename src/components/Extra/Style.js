@@ -32,7 +32,6 @@ export  default{
     img:{            
         backgroundColor:"#3498db",
         marginTop: 30,
-        marginBottom: 30,
         alignSelf: "stretch",
     },
     list:{
@@ -114,10 +113,17 @@ export  default{
         alignSelf:"stretch",
         height: deviceHeight / 6,
         width:null,
-        marginBottom:10,
-        //   paddingBottom:10,
+        marginBottom:60,
+          paddingBottom:30,
         alignItems:'center'
       },
+       emailHomeP:{
+            color: '#fff',
+            backgroundColor:'#3498db',
+            alignSelf:"stretch",
+            textAlign:'center',
+            marginTop:20
+        },
       bottomTab:{
           backgroundColor:"#3498db",
       },
@@ -207,35 +213,21 @@ export  default{
     },
 
     welcome: {
-
         fontSize: 20,
-
         textAlign: 'center',
-
         margin: 10,
-
     },
 
     instructions: {
-
         textAlign: 'center',
-
         color: '#333333',
-
         marginBottom: 5,
-
     },
-
     scanner: {
-
         flex: 1,
-
         width: 400,
-
         height: 200,
-
         borderColor: 'orange',
-
         borderWidth: 1
 
     }

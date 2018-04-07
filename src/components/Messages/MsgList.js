@@ -3,60 +3,75 @@ import { Image, View, TouchableOpacity } from 'react-native';
 import { Container, Header, Title, Left, Button, Right, Body, Content,Text, Card, CardItem, Thumbnail } from "native-base";
 import {Icon} from 'react-native-elements';
 import { StackNavigator } from "react-navigation";
+import {connect} from 'react-redux';
 import styles from "../Extra/Style";
 
-export default class MsgList extends Component{
+class MsgList extends Component{
   constructor(props){
     super(props);
-    this.state = {
-      data:this.props.data, 
-      type: this.props.type,
-    };
+    if(this.props.type == 'voice'){
+      this.state = {
+        data:this.props.voiceMessages, 
+        type: this.props.type,
+      };
+    }else if(this.props.type == 'text'){
+      this.state = {
+        data:this.props.conversations, 
+        type: this.props.type,
+      };
+    }else{
+      this.state = {
+        data:this.props.faxes, 
+        type: this.props.type,
+      };
+    }
+    
   } 
 
   renderItem =(item,i) =>{
-    const faxThumb = <Thumbnail rectangle source={item.fileName} key={item.Id.toString()}/>;
-    const audioThumb = <Icon name="voicemail" key={item.Id.toString()}/>;
-    const textThumb = <Icon name="chat" key={item.Id.toString()}/>;    
+    const faxThumb = <Thumbnail rectangle source={item.fileName} key={item.id}/>;
+    const audioThumb = <Icon name="voicemail" key={item.id}/>;
+    const textThumb = <Icon name="chat" key={item.id}/>;    
 
     const faxNavButton = <Button               
                         transparent
-                        key={item.Id.toString()+"_btnNav"}
+                        key={item.id+"_btnNav"}
                         onPress={()=>this.props.navigation.navigate("Fax",{file:item})}
                         >
-                        <Icon name="chevron-right" key={item.Id.toString()+"_icon"}/>
+                        <Icon name="chevron-right" key={item.id+"_icon"}/>
                          </Button>;
     const audioNavButton = <Button
-                        key={item.Id.toString()+"_btnNav"}
+                        key={item.id+"_btnNav"}
                         transparent
                         onPress={()=>this.props.navigation.navigate("Voice",{file:item})}
                         >
-                        <Icon name="chevron-right" key={item.Id.toString()+"_icon"}/>                        
+                        <Icon name="chevron-right" key={item.id+"_icon"}/>                        
                         </Button>;
     const textNavButton = <Button
                               transparent     
                               onPress={()=>this.props.navigation.navigate("Text",{conversation:item})}                         
-                              key={item.Id.toString()+"_btnNav"}>
-                              <Icon name="chevron-right" key={item.Id.toString()+"_icon"}/>
+                              key={item.id+"_btnNav"}>
+                              <Icon name="chevron-right" key={item.id+"_icon"}/>
                               </Button>;
 
     if(this.state.type === "text"){
+      console.log("text item id:" +item.id);
       return ( 
-        <TouchableOpacity key={item.Id.toString()} onPress={()=>this.props.navigation.navigate("Text",{conversation:item})}>     
-        <Card key={item.Id.toString()}>
-          <CardItem style={{alignItems:"center"}} key={item.Id.toString()+"_header"}>
-              <Body key={item.Id.toString()}>
-                <Text style={{marginLeft:20}} key={item.Id.toString()}>{item.contactNumbers}</Text>
+        <TouchableOpacity key={item.id} onPress={()=>this.props.navigation.navigate("Text",{conversation:item})}>     
+        <Card key={item.id}>
+          <CardItem style={{alignItems:"center"}} key={item.id+"_header"}>
+              <Body key={item.id}>
+                <Text style={{marginLeft:20}} key={item.id}>{item.contactNumbers}</Text>
               </Body>                     
           </CardItem>
-          <CardItem cardBody key={item.Id.toString()}>
-          <Left key={item.Id.toString()+"_left"}>
+          <CardItem cardBody key={item.id}>
+          <Left key={item.id+"_left"}>
                 { textThumb }
-              <Body key={item.Id.toString()+"leftBody"}>
-                <Text numberOfLines={1} note key={item.Id.toString()}>{item.lastMessage.text}</Text>
+              <Body key={item.id+"leftBody"}>
+                <Text numberOfLines={1} note key={item.id}>{item.lastMessage.text}</Text>
               </Body>
             </Left>
-            <Right key={item.Id.toString()+"_right"}>
+            <Right key={item.id+"_right"}>
               { textNavButton }
             </Right>
           </CardItem>
@@ -65,16 +80,16 @@ export default class MsgList extends Component{
       )
     }else if(this.state.type === "fax"){
       return (
-        <TouchableOpacity key={item.Id.toString()} onPress={()=>this.props.navigation.navigate("Fax",{file:item})}>
-        <Card key={item.Id.toString()}>
-          <CardItem key={item.Id.toString()}>
-            <Body style={{flexDirection:'row'}} key={item.Id.toString()+"_body"}>
+        <TouchableOpacity key={item.id} onPress={()=>this.props.navigation.navigate("Fax",{file:item})}>
+        <Card key={item.id}>
+          <CardItem key={item.id}>
+            <Body style={{flexDirection:'row'}} key={item.id+"_body"}>
                 {faxThumb}
                 <View style={{marginLeft:20}}>
-                <Text key={item.Id.toString()+"_text1"}>
+                <Text key={item.id+"_text1"}>
                   {item.from}
                 </Text>
-                <Text note key={item.Id.toString()+"_text2"}>{item.time}</Text>
+                <Text note key={item.id+"_text2"}>{item.time}</Text>
                 </View>
                 <Right>
                   {faxNavButton}
@@ -86,16 +101,16 @@ export default class MsgList extends Component{
       )
     }else{
       return(
-      <TouchableOpacity key={item.Id.toString()} onPress={()=>this.props.navigation.navigate("Voice",{file:item})}>
-        <Card key={item.Id.toString()}>
-          <CardItem key={item.Id.toString()}>
-            <Body style={{flexDirection:'row'}} key={item.Id.toString()+"_body"}>
+      <TouchableOpacity key={item.id} onPress={()=>this.props.navigation.navigate("Voice",{file:item})}>
+        <Card key={item.id}>
+          <CardItem key={item.id}>
+            <Body style={{flexDirection:'row'}} key={item.id+"_body"}>
                 {audioThumb }
                 <View style={{marginLeft:20}}>
-                <Text key={item.Id.toString()+"_text1"}>
+                <Text key={item.id+"_text1"}>
                   {item.from}
                 </Text>
-                <Text note key={item.Id.toString()+"_text2"}>{item.time}</Text>
+                <Text note key={item.id+"_text2"}>{item.time}</Text>
                 </View>
                 <Right>
                   {audioNavButton }
@@ -123,9 +138,19 @@ export default class MsgList extends Component{
             </Left>            
             </Header>
           <Content style= {styles.content}>
-            {this.state.data.map(this.renderItem)}          
+            {this.state.data.map(this.renderItem)} 
           </Content> 
          </Container>
         );
     }
 }
+
+const mapStateToProps = ({phones}) => {
+  const voiceMessages = phones[0].voiceMessages;
+  const conversations = phones[0].conversations;
+  const faxes = phones[0].faxes;
+
+  return {voiceMessages, conversations, faxes};
+}
+
+export default connect(mapStateToProps)(MsgList);
