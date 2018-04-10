@@ -29,7 +29,7 @@ class MsgList extends Component{
   } 
 
   renderItem =(item,i) =>{
-    const faxThumb = <Thumbnail rectangle source={item.fileName} key={item.id}/>;
+    const faxThumb = <Thumbnail rectangle source={{uri: item.fileName}} key={item.id}/>;
     const audioThumb = <Icon name="voicemail" key={item.id}/>;
     const textThumb = <Icon name="chat" key={item.id}/>;    
 

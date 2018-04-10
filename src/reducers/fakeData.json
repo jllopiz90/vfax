@@ -1,16 +1,16 @@
 [
     {
-        "id"			:"AA97C970-DD9E-496F-BC66-3D92486B1657",
+        "id"			:1,
         "number"		:"786-422-3322",
         "voiceMessages" :[
             {
-                "id"	:"E1323991-ED43-4C45-A90A-1125354C6F88",
+                "id"	:1,
                 "from"	:"786-322-1119",
                 "time"	:"December 15, 2017 Fri 3:13 PM",
                 "uri"	:"https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
              },
             {
-                "id"	:"19038A2A-08F8-42AD-9E45-C16450C25182",
+                "id"	:2,
                 "from"	:"786-322-1119",
                 "time"	:"December 15, 2017 Fri 3:13 PM",
                 "uri"	:"https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3"
@@ -123,10 +123,22 @@
         ],
         "faxes":[
             {
-                "id":"6191E41A-F451-4D27-85EE-D8F128C355E8", 
+                "id":1, 
                 "from":"646-222-4444", 
                 "time":"March 3, 2018 Sat 12:12 AM",
-                "fileName":"../../files/faxImg.png"
+                "fileName":"https://utemplates.net/wp-content/uploads/2017/03/utemplates_lt01773060.png"
+            },
+            {
+                "id":2, 
+                "from":"646-222-3333", 
+                "time":"March 3, 2018 Sat 14:12 PM",
+                "fileName":"https://utemplates.net/wp-content/uploads/2017/03/utemplates_lt01773060.png"
+            },
+            {
+                "id":3, 
+                "from":"646-222-2222", 
+                "time":"March 4, 2018 Sun 09:12 PM",
+                "fileName":"https://utemplates.net/wp-content/uploads/2017/03/utemplates_lt01773060.png"
             }
         ]
     },

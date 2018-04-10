@@ -7,6 +7,7 @@ import styles from "../Extra/Style";
 export default class FaxMessage extends Component{
   constructor(props){
     super(props);
+    console.log( this.props.navigation.state.params.file.fileName);
   } 
 
   render(){
@@ -20,11 +21,11 @@ export default class FaxMessage extends Component{
                 <Icon name="chevron-left"  style={{fontSize:32, color:"#777"}}/>
               </Button>
               <Body>
-                <Title style={styles.textHeader}>{"Fax Details"}</Title>  
+                <Title style={{fontWeight: "600",fontSize:24,color:"#777"}}>Fax Details</Title>  
               </Body>
             </Left>            
           </Header>
-          <Content>
+          <Content style={{flex:1}}>
               <Card>
                   <CardItem bordered>
                     <Left> 
@@ -34,8 +35,9 @@ export default class FaxMessage extends Component{
                     </Body>                   
                     </Left>
                   </CardItem>
-                  <CardItem cardBody>
-                    <Image source={this.props.navigation.state.params.file.fileName}/>
+                  <CardItem cardBody style={{backgroundColor:'#777',flex:1}}>
+                    <Image source={{uri: this.props.navigation.state.params.file.fileName}} 
+                      resizeMode="contain" style={{flex:1,alignSelf:'stretch' ,height:500,width:undefined}}/>
                   </CardItem>
               </Card>
           </Content>

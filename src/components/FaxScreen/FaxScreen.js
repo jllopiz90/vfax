@@ -25,9 +25,8 @@ const FaxTabs = TabNavigator({
     }
   },{
       tabBarOptions:{
-        // activeTintColor:'#3498db',
-        // inactiveTintColor:"#FFFFFF",
-        tintColor:"#777",
+        activeTintColor:'#3498db',
+        inactiveTintColor:"#FFFFFF",
         showIcon:true,
         activeBackgroundColor:"#FFFFFF",
         inactiveBackgroundColor:"#3498db",
@@ -41,37 +40,4 @@ const FaxTabs = TabNavigator({
   });
 
 export default FaxTabs;
-
-// export default class FaxScreen extends Component{
-//   constructor(props){
-//     super(props);
-//   }
-  
-//     render(){
-//       return (
-//         <Container style={styles.containerWhite}>       
-//         {/* <Header style={styles.header}>
-//             <Left>
-//               <Button               
-//               transparent
-//               onPress={()=>this.props.navigation.navigate("DrawerOpen")}>
-//                 <Icon style={styles.icon} name="menu" />
-//               </Button>
-//             </Left>
-//             <Body>
-//               <Title style={styles.textHeader}>{"Fax"}</Title>  
-//             </Body>
-//             <Right/>
-//             </Header>  */}
-//           <Tabs tabBarPosition="bottom">
-//             <Tab heading={<TabHeading style={styles.bottomTab}><Icon name="mail"/><Text style={{fontSize:22}}>Inbox</Text></TabHeading>}>
-//               <InboxFax navigation={this.props.navigation}/>
-//             </Tab>
-//             <Tab heading={<TabHeading style={styles.bottomTab}><Icon name="paper-plane"/><Text style={{fontSize:22}}>Outbox</Text></TabHeading>}>
-//               <OutboxFax />
-//             </Tab>
-//           </Tabs>
-//       </Container>);
-//     }
-//   }
   
