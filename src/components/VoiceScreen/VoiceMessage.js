@@ -9,7 +9,7 @@ export default class VoiceMessage extends Component{
   constructor(props){
     super(props);
     this.state = {
-      path:this.props.navigation.state.params.file.path, 
+      path:this.props.navigation.state.params.file.uri, 
       playPauseButton: 'Preparing...',
       stopButtonDisabled: true,
       playButtonDisabled: true,
@@ -19,6 +19,7 @@ export default class VoiceMessage extends Component{
 
       error: null
     };
+    console.log(this.props.navigation.state.params.file.uri);
   }
 
   componentWillMount() {
