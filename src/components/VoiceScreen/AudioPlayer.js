@@ -18,8 +18,6 @@ export default class AudioPlayer extends Component{
     
           error: null
         };
-        console.log("inside audio player");
-        console.log(this.state.path);
       }
     
       componentWillMount() {
