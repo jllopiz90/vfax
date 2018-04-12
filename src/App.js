@@ -5,20 +5,21 @@ import {Provider,connect} from "react-redux";
 import {createStore, applyMiddleware} from "redux";
 import ReduxThunk from 'redux-thunk';
 import reducers from "./reducers";
-
+import firebase from 'firebase';
 
 export default class App extends Component {
 
-  state = {
-    isLoggedIn: false
-  }
-
-
-  onLogoutPress = ()=>{
-    this.setState({isLoggedIn:false});
-    alert("User Logout");
-  }
-
+  componentWillMount(){
+    var config = {
+        apiKey: "AIzaSyAs0685doWYqECoiEsyxEYhQwwk6P6RBYE",
+        authDomain: "auth-3347a.firebaseapp.com",
+        databaseURL: "https://auth-3347a.firebaseio.com",
+        projectId: "auth-3347a",
+        storageBucket: "auth-3347a.appspot.com",
+        messagingSenderId: "104777415123"
+    };
+    firebase.initializeApp(config);
+}
   
 
 
