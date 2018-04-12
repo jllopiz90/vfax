@@ -22,6 +22,21 @@ export  default{
         alignItems: 'stretch',
         backgroundColor: "#FFFFFF"
     },
+    boxShadow:{
+        borderWidth: 1,
+        borderRadius: 1,
+        borderColor: '#ddd', 
+        borderTopWidth: 0.5,
+        borderBottomWidth: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        elevation: 2,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10,
+    },
     header:{
         backgroundColor: "#FFFFFF",
     },
@@ -143,8 +158,26 @@ export  default{
     },
     slider: {
         height: 10,
-        alignSelf:"stretch",
-        backgroundColor:"blue",
+        flex:1,
+        marginLeft:10,
+        marginRight:10,
+        // alignSelf:"stretch",
+    },
+    displayTime:{
+        marginTop:5,
+        marginLeft:5
+    },
+    audioControls:{
+        flex:1,
+        flexDirection:'row', 
+        justifyContent:"flex-start",
+        marginTop:20
+    },
+    audioDate:{
+        flex:1,
+        alignItems:'flex-start', 
+        marginTop:10, 
+        marginLeft:30
     },
     soundController:{
         marginLeft:20,
